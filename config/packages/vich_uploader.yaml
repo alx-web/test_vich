@@ -1,0 +1,14 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        project:
+            uri_prefix: /project
+            upload_destination: '%kernel.project_dir%/private/project'
+            inject_on_load: true
+            delete_on_update: true
+            delete_on_remove: true
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
+            directory_namer:
+                service: vich_uploader.directory_namer_subdir
+                options: {chars_per_dir: 1, dirs: 10}
